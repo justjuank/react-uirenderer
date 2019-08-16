@@ -20,7 +20,7 @@ function ResolveExpression(expression, data) {
  */
 const SchemaField = (props) => {
 
-	const { schema, data } = props;
+	const { schema, data, fullData } = props;
 
 	if (!schema) throw new Error('No schema found in this component.');
 
@@ -29,7 +29,7 @@ const SchemaField = (props) => {
 
 	const { visible } = schema;
 
-	var visibility = ResolveExpression(visible, data);
+	var visibility = ResolveExpression(visible, fullData);
 
 	if (visible !== undefined && !visibility) return null;
 
@@ -38,11 +38,7 @@ const SchemaField = (props) => {
 		LabelComponent = <Label>{schema.label}</Label>;
 	}
 
-	var value = null;
-
-	if (data) {
-		value = objectPath.get(data, schema.ref);
-	}
+	var value = data;
 
 	var SubComponent = null;
 	SubComponent = GetComponentForType(schema.type);
@@ -51,7 +47,7 @@ const SchemaField = (props) => {
 		SubSchema = <i>Schema type '{schema.type}' not supported</i>;
 	}
 	else
-		SubSchema = <SubComponent {...props} value={value} />;
+		SubSchema = <SubComponent {...props} data={value} value={value} />;
 
 	return (
 		<Fragment>

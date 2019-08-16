@@ -19,6 +19,20 @@
    },
    {
       "id": 3,
+      "type": "text",
+      "ref": "MyField3",
+      "label": "Text Field 3",
+      "visible": {
+         ">": [
+            {
+               "var": "MyField1"
+            },
+            3
+         ]
+      }
+   },
+   {
+      "id": 4,
       "type": "object",
       "ref": "MyObject1",
       "label": "Object field",
@@ -32,38 +46,80 @@
                   "max": 5
                }
             ],
-            "ref": "MyObject1.MyField1",
+            "ref": "MyProp1",
             "label": "Numeric Field 1"
          },
          {
             "id": 2,
             "type": "text",
-            "ref": "MyObject1.MyField2",
+            "ref": "MyProp2",
             "label": "Text Field 2"
          }
       ]
    },
    {
-      "id": 4,
+      "id": 5,
       "type": "array",
       "ref": "MyArray1",
-      "label": "Array field",
+      "label": "Array numeric field",
       "items": {
-         "type": "text",
-         "label": "Text Item"
+         "type": "number",
+         "label": "Number"
       }
    },
    {
-      "id": 5,
-      "type": "text",
-      "ref": "MyField3",
-      "label": "Text Field 3",
-      "visible": {
-         ">": [
+      "id": 6,
+      "type": "array",
+      "ref": "MyArray2",
+      "label": "Array object field",
+      "items": {
+         "type": "object",
+         "label": "Object field in array",
+         "properties": [
             {
-               "var": "MyField1"
+               "id": 1,
+               "type": "number",
+               "range": [
+                  {
+                     "min": 0,
+                     "max": 5
+                  }
+               ],
+               "ref": "MyField1",
+               "label": "Numeric Field 1"
             },
-            3
+            {
+               "id": 2,
+               "type": "text",
+               "ref": "MyField2",
+               "label": "Text Field 2"
+            },
+            {
+               "id": 4,
+               "type": "object",
+               "ref": "MyObject1",
+               "label": "Nested Object field",
+               "properties": [
+                  {
+                     "id": 1,
+                     "type": "number",
+                     "range": [
+                        {
+                           "min": 0,
+                           "max": 5
+                        }
+                     ],
+                     "ref": "MyProp1",
+                     "label": "Numeric Field 1"
+                  },
+                  {
+                     "id": 2,
+                     "type": "text",
+                     "ref": "MyProp2",
+                     "label": "Text Field 2"
+                  }
+               ]
+            }
          ]
       }
    }

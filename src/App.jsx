@@ -15,7 +15,7 @@ function App() {
 
   const OnChange = useCallback((newData) => {
     setData(newData);
-    console.log('Output', newData);
+    //console.log('Output', newData);
   }, []);
 
   return (

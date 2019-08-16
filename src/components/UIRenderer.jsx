@@ -4,7 +4,7 @@ import immutable from 'object-path-immutable';
 
 import SchemaRenderer from './SchemaRenderer';
 
-function UIRenderer(props) {
+const UIRenderer = (props) => {
     const [data, setData] = useState(props.data);
 
     const OnChange = useCallback((value, ref) => {
@@ -19,7 +19,7 @@ function UIRenderer(props) {
 
     return (
         <div>
-            <SchemaRenderer schema={props.schema} data={data} OnChange={OnChange} />
+            <SchemaRenderer schema={props.schema} data={data} fullData={data} OnChange={OnChange} />
         </div>
     );
 }

@@ -6,39 +6,49 @@ import immutable from 'object-path-immutable';
 
 import SchemaField from '../../controls/fields/SchemaField';
 
+const ArrayItem = (props) => {
+    return (
+        <div style={{display: 'flex', flexDirection: 'row' }}>
+            <div style={{display: 'flex', flexDirection: 'column', flexGrow: '9' }}>
+                <SchemaField schema={props.newSchema} data={props.data} OnChange={props.OnChange} />
+            </div>
+            <div style={{display: 'flex', flexDirection: 'column', flexFlow: 'column-reverse' }}>
+                <button onClick={() => props.DeleteItem(props.index)}>Delete</button>
+            </div>                
+        </div>
+    );
+}
+
 const ArrayField = (props) => {
 
     const { schema, data } = props;
 
-    const AddItem = (item) => {
-        var newArray = immutable.push(data, schema.ref, null);
-        if(props.OnChange){
-            props.OnChange(newArray);
-        }
+    const OnEdit = (value, ref) => {
+        let newData = immutable.set(data, ref, value);        
+        OnChange(newData);
+    };
+
+    const OnChange = (newArrayValue) => {
+        if(props.OnChange)
+            props.OnChange(newArrayValue, props.schema.ref);
+    };
+
+    const AddItem = () => {
+        var newArray = immutable.push(data, null, null);
+        OnChange(newArray);
     };
 
     const DeleteItem = (itemIndex) => {
-        var newArray = immutable.del(data, schema.ref + '.' +itemIndex);
-        if(props.OnChange){
-            props.OnChange(newArray);
-        }
+        var newArray = immutable.del(data, itemIndex);
+        OnChange(newArray);
     };
 
-    const arrayData = objectPath.get(data, schema.ref);
+    const arrayData = data;
 
     var items = !arrayData ? null : arrayData.map( (item, index) => {
-        let itemRef = schema.ref + '.' +index
+        let itemRef = index;
         let newSchema = immutable.set(schema.items, 'ref', itemRef);
-        return (
-            <div style={{display: 'flex', flexDirection: 'row' }}>
-                <div style={{display: 'flex', flexDirection: 'column', flexGrow: '9' }}>
-                    <SchemaField key={index} schema={newSchema} data={data} OnChange={props.OnChange} />
-                </div>
-                <div style={{display: 'flex', flexDirection: 'column', flexFlow: 'column-reverse' }}>
-                    <button onClick={() => DeleteItem(index)}>Delete</button>
-                </div>                
-            </div>
-        );
+        return <ArrayItem key={index} index={index} newSchema={newSchema} data={item} OnChange={OnEdit} DeleteItem={DeleteItem} />;
     });
 
     return (
