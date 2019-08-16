@@ -19,7 +19,7 @@ const UIRenderer = (props) => {
 
     return (
         <div>
-            <SchemaRenderer schema={props.schema} data={data} fullData={data} OnChange={OnChange} />
+            <SchemaRenderer schema={props.schema} localData={data} data={data} OnChange={OnChange} />
         </div>
     );
 }
