@@ -1,0 +1,70 @@
+[
+   {
+      "id": 1,
+      "type": "number",
+      "range": [
+         {
+            "min": 0,
+            "max": 5
+         }
+      ],
+      "ref": "MyField1",
+      "label": "Numeric Field 1"
+   },
+   {
+      "id": 2,
+      "type": "text",
+      "ref": "MyField2",
+      "label": "Text Field 2"
+   },
+   {
+      "id": 3,
+      "type": "object",
+      "ref": "MyObject1",
+      "label": "Object field",
+      "properties": [
+         {
+            "id": 1,
+            "type": "number",
+            "range": [
+               {
+                  "min": 0,
+                  "max": 5
+               }
+            ],
+            "ref": "MyObject1.MyField1",
+            "label": "Numeric Field 1"
+         },
+         {
+            "id": 2,
+            "type": "text",
+            "ref": "MyObject1.MyField2",
+            "label": "Text Field 2"
+         }
+      ]
+   },
+   {
+      "id": 4,
+      "type": "array",
+      "ref": "MyArray1",
+      "label": "Array field",
+      "items": {
+         "type": "text",
+         "label": "Text Item"
+      }
+   },
+   {
+      "id": 5,
+      "type": "text",
+      "ref": "MyField3",
+      "label": "Text Field 3",
+      "visible": {
+         ">": [
+            {
+               "var": "MyField1"
+            },
+            3
+         ]
+      }
+   }
+]
