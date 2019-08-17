@@ -33,6 +33,56 @@
    },
    {
       "id": 4,
+      "type": "text",
+      "ref": "MyField4",
+      "label": "Only Fruit Names",
+      "valid": {
+         "or": [
+            {
+               "==": [
+                  {
+                     "var": "MyField4"
+                  },
+                  "Apple"
+               ]
+            },
+            {
+               "==": [
+                  {
+                     "var": "MyField4"
+                  },
+                  "Banana"
+               ]
+            },
+            {
+               "==": [
+                  {
+                     "var": "MyField4"
+                  },
+                  "Orange"
+               ]
+            },
+            {
+               "==": [
+                  {
+                     "var": "MyField4"
+                  },
+                  "Grape"
+               ]
+            },
+            {
+               "==": [
+                  {
+                     "var": "MyField4"
+                  },
+                  "Peach"
+               ]
+            }
+         ]
+      }
+   },
+   {
+      "id": 4,
       "type": "object",
       "ref": "MyObject1",
       "label": "Object field",
