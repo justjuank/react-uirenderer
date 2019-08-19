@@ -2,12 +2,6 @@
    {
       "id": 1,
       "type": "number",
-      "range": [
-         {
-            "min": 0,
-            "max": 5
-         }
-      ],
       "ref": "MyField1",
       "label": "Numeric Field 1"
    },
@@ -21,7 +15,7 @@
       "id": 3,
       "type": "text",
       "ref": "MyField3",
-      "label": "Text Field 3",
+      "label": "Text Field 3 Shown based on Numeric Field 1",
       "visible": {
          ">": [
             {
@@ -35,49 +29,12 @@
       "id": 4,
       "type": "text",
       "ref": "MyField4",
-      "label": "Only Fruit Names",
+      "label": "Only Fruit Names (with custom validation message)",
       "valid": {
-         "or": [
-            {
-               "==": [
-                  {
-                     "var": "MyField4"
-                  },
-                  "Apple"
-               ]
-            },
-            {
-               "==": [
-                  {
-                     "var": "MyField4"
-                  },
-                  "Banana"
-               ]
-            },
-            {
-               "==": [
-                  {
-                     "var": "MyField4"
-                  },
-                  "Orange"
-               ]
-            },
-            {
-               "==": [
-                  {
-                     "var": "MyField4"
-                  },
-                  "Grape"
-               ]
-            },
-            {
-               "==": [
-                  {
-                     "var": "MyField4"
-                  },
-                  "Peach"
-               ]
-            }
+         "if": [
+            { "in": [{"var": "MyField4"}, ["Apple", "Banana", "Orange", "Grape", "Peach"]] },
+            true,
+            "This is not a fruit"
          ]
       }
    },
@@ -90,20 +47,19 @@
          {
             "id": 1,
             "type": "number",
-            "range": [
-               {
-                  "min": 0,
-                  "max": 5
-               }
-            ],
+            "range": {
+               "min": 0,
+               "max": 5
+            },
+            "multipleOf": 0.01,
             "ref": "MyProp1",
-            "label": "Numeric Field 1"
+            "label": "Numeric Prop 1 with min=0 and max=5 range and multipleOf=0.01"
          },
          {
             "id": 2,
             "type": "text",
             "ref": "MyProp2",
-            "label": "Text Field 2"
+            "label": "Text Prop 2"
          }
       ]
    },
@@ -114,7 +70,11 @@
       "label": "Array numeric field",
       "items": {
          "type": "number",
-         "label": "Number"
+         "label": "Number",
+         "range": {
+            "min": 0,
+            "max": 5
+         }
       }
    },
    {
@@ -129,12 +89,6 @@
             {
                "id": 1,
                "type": "number",
-               "range": [
-                  {
-                     "min": 0,
-                     "max": 5
-                  }
-               ],
                "ref": "MyField1",
                "label": "Numeric Field 1"
             },
@@ -153,12 +107,6 @@
                   {
                      "id": 1,
                      "type": "number",
-                     "range": [
-                        {
-                           "min": 0,
-                           "max": 5
-                        }
-                     ],
                      "ref": "MyProp1",
                      "label": "Numeric Field 1"
                   },

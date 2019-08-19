@@ -55,8 +55,10 @@ const SchemaField = (props) => {
 	
 	var ErrorComponent = null;
 	
-	if(!validity)
-		ErrorComponent = <p style={{color: 'red', margin: 0, fontSize: '0.85rem'}}>Invalid</p>
+	if(validity!==true){
+		let errorMessage = typeof validity === 'string' ? validity : 'Invalid';
+		ErrorComponent = <p style={{color: 'red', margin: 0, fontSize: '0.85rem'}}>{errorMessage}</p>
+	}
 
 	return (
 		<Fragment>

@@ -20,7 +20,7 @@ const ArrayItem = (props) => {
 const ArrayField = (props) => {
 
     const { schema, localData, data } = props;
-
+    
     const OnChange = (newArrayValue) => {
         if(props.OnChange)
             props.OnChange(newArrayValue, props.schema.ref);
