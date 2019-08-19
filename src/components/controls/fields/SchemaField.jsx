@@ -39,7 +39,7 @@ const SchemaField = (props) => {
 
 	if (schema.label) {
 		var Label = GetComponentForType('label');
-		LabelComponent = <Label>{schema.label}</Label>;
+		LabelComponent = <Label labelInline={schema.labelInline}>{schema.label}</Label>;
 	}
 
 	var value = localData;

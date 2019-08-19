@@ -2,6 +2,7 @@ import Label from './layout/Label';
 
 import TextField from './fields/TextField';
 import NumberField from './fields/NumberField';
+import BooleanField from './fields/BooleanField';
 import ObjectField from './fields/ObjectField';
 import ArrayField from './fields/ArrayField';
 
@@ -18,6 +19,7 @@ const GetComponentForType = (type) => {
 RegisterControl('label', Label);
 RegisterControl('text', TextField);
 RegisterControl('number', NumberField);
+RegisterControl('boolean', BooleanField);
 RegisterControl('object', ObjectField);
 RegisterControl('array', ArrayField);
 

@@ -1,18 +1,15 @@
 [
    {
-      "id": 1,
       "type": "number",
       "ref": "MyField1",
       "label": "Numeric Field 1"
    },
    {
-      "id": 2,
       "type": "text",
       "ref": "MyField2",
       "label": "Text Field 2"
    },
    {
-      "id": 3,
       "type": "text",
       "ref": "MyField3",
       "label": "Text Field 3 Shown based on Numeric Field 1",
@@ -26,7 +23,6 @@
       }
    },
    {
-      "id": 4,
       "type": "text",
       "ref": "MyField4",
       "label": "Only Fruit Names (with custom validation message)",
@@ -39,13 +35,17 @@
       }
    },
    {
-      "id": 4,
+      "type": "boolean",
+      "ref": "MyBoolean1",
+      "label": "Boolean field",
+      "labelInline": true
+   },
+   {
       "type": "object",
       "ref": "MyObject1",
       "label": "Object field",
       "properties": [
          {
-            "id": 1,
             "type": "number",
             "range": {
                "min": 0,
@@ -56,29 +56,28 @@
             "label": "Numeric Prop 1 with min=0 and max=5 range and multipleOf=0.01"
          },
          {
-            "id": 2,
             "type": "text",
             "ref": "MyProp2",
             "label": "Text Prop 2"
+         },
+         {
+            "type": "boolean",
+            "ref": "MyBoolean1",
+            "label": "Boolean prop",
+            "labelInline": true
          }
       ]
    },
    {
-      "id": 5,
       "type": "array",
       "ref": "MyArray1",
       "label": "Array numeric field",
       "items": {
          "type": "number",
-         "label": "Number",
-         "range": {
-            "min": 0,
-            "max": 5
-         }
+         "label": "Number"
       }
    },
    {
-      "id": 6,
       "type": "array",
       "ref": "MyArray2",
       "label": "Array object field",
@@ -87,31 +86,26 @@
          "label": "Object field in array",
          "properties": [
             {
-               "id": 1,
                "type": "number",
                "ref": "MyField1",
                "label": "Numeric Field 1"
             },
             {
-               "id": 2,
                "type": "text",
                "ref": "MyField2",
                "label": "Text Field 2"
             },
             {
-               "id": 4,
                "type": "object",
                "ref": "MyObject1",
                "label": "Nested Object field",
                "properties": [
                   {
-                     "id": 1,
                      "type": "number",
                      "ref": "MyProp1",
                      "label": "Numeric Field 1"
                   },
                   {
-                     "id": 2,
                      "type": "text",
                      "ref": "MyProp2",
                      "label": "Text Field 2"
