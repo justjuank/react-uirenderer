@@ -43,6 +43,25 @@
       "labelInline": true
    },
    {
+      "type": "select",
+      "ref": "MySelect1",
+      "label": "Dropdown field",
+      "items": [
+         {
+            "label": "Option 1",
+            "value": 1
+         },
+         {
+            "label": "Option 2",
+            "value": 2
+         },
+         {
+            "label": "Another Option",
+            "value": 3
+         }
+      ]
+   },
+   {
       "type": "object",
       "ref": "MyObject1",
       "label": "Object field",

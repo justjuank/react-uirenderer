@@ -9,7 +9,8 @@ import schema from './schemas/example1.json';
 
 const initialData = {
   MyField1: 1,
-  MyField2: 'test'
+  MyField2: 'test',
+  MySelect1: 2
 };
 
 function App() {

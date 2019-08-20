@@ -1,4 +1,4 @@
-import React, { useRef, createContext, useContext, useEffect, useState, useCallback } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 const JSONEditor = (props) => {
     const [editedSchema, setEditedSchema] = useState(JSON.stringify(props.json, null, 4));

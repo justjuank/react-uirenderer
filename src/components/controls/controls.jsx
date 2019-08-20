@@ -5,6 +5,7 @@ import NumberField from './fields/NumberField';
 import BooleanField from './fields/BooleanField';
 import ObjectField from './fields/ObjectField';
 import ArrayField from './fields/ArrayField';
+import SelectField from './fields/SelectField';
 
 var controls = {};
 
@@ -22,5 +23,6 @@ RegisterControl('number', NumberField);
 RegisterControl('boolean', BooleanField);
 RegisterControl('object', ObjectField);
 RegisterControl('array', ArrayField);
+RegisterControl('select', SelectField);
 
 export { GetComponentForType, RegisterControl };
