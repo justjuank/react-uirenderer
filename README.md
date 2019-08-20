@@ -2,6 +2,9 @@
 
 Give it a try: [https://react-uirenderer.herokuapp.com/](https://react-uirenderer.herokuapp.com/)
 
+This was done as a proof of concept to generate a user interface dynamically by using some kind of schema. 
+There's no documentation as of now so just try the demo and read the example1.json to learn more about the UI Schema and how to generate UI with it.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
