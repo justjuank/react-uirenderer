@@ -15,11 +15,11 @@ const SchemaRenderer = (props) => {
 	if (Array.isArray(props.schema)) {
 		SubComponent = props.schema.map((subSchema, index) => {
 			const localData = objectPath.get(props.localData, subSchema.ref);
-			return <SchemaRenderer key={index} schema={subSchema} localData={localData} data={props.data} OnChange={props.OnChange} />;
+			return <SchemaRenderer key={index} schema={subSchema} parentRef={props.parentRef} localData={localData} data={props.data} OnChange={props.OnChange} />;
 		});
 	}
 	else if (typeof props.schema === 'object') {
-		SubComponent = <SchemaField schema={props.schema} localData={props.localData} data={props.data} OnChange={props.OnChange} />;
+		SubComponent = <SchemaField schema={props.schema} parentRef={props.parentRef} localData={props.localData} data={props.data} OnChange={props.OnChange} />;
 	}
 
 	return (

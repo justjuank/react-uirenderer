@@ -1,27 +1,44 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 
 import immutable from 'object-path-immutable';
 
 import SchemaRenderer from './SchemaRenderer';
 
+export const UIRendererContext = createContext();
+
 const UIRenderer = (props) => {
     const [data, setData] = useState(props.data);
+    const [formValid, setFormValid] = useState(false);
+    const [fieldValidation, setFieldValidation] = useState({});
 
-    const OnChange = useCallback((value, ref) => {
+    const OnChange = useCallback((value, ref, absoluteRef, validationRules) => {
+        let isFieldValid = Object.values(validationRules).findIndex( x => x!==true) === -1;
+        let newFieldValidations = {
+            ...fieldValidation,
+            [absoluteRef]: isFieldValid ? true : validationRules[0]
+        }
+        setFieldValidation(newFieldValidations);
+
+        let isFormValid = Object.values(newFieldValidations).findIndex( x => x!==true) === -1;
+        setFormValid(isFormValid);
+
         setData(immutable.set(data, ref, value));
-    }, [data]);
+    }, [data, fieldValidation]);
 
     useEffect(()=> {
         if(props.OnChange){
-            props.OnChange(data);
+            props.OnChange(data, formValid);
         }
-    }, [data, props]);
+    }, [data, formValid, props]);
 
     return (
         <div>
-            <SchemaRenderer schema={props.schema} localData={data} data={data} OnChange={OnChange} />
+            <UIRendererContext.Provider value={fieldValidation}>
+                <SchemaRenderer schema={props.schema} localData={data} data={data} OnChange={OnChange} />
+            </UIRendererContext.Provider>
         </div>
     );
 }
 
+export const useContextValue = () => useContext(UIRendererContext);
 export default UIRenderer;

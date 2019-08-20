@@ -5,7 +5,7 @@ const NumberField = (props) => {
 
     const OnChange = (e) => {
         var value = e.target.value.length <= 0 ? null : (parseFloat(e.target.value));
-        props.OnChange(value, schema.ref);
+        props.OnChange(value, schema.ref, schema.ref);
     }
 
     let max = schema.range ? schema.range.max : null;

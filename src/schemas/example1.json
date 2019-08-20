@@ -7,7 +7,9 @@
    {
       "type": "text",
       "ref": "MyField2",
-      "label": "Text Field 2"
+      "label": "Text Field 2",
+      "minlength": 3,
+      "maxlength": 12
    },
    {
       "type": "text",
@@ -25,7 +27,7 @@
    {
       "type": "text",
       "ref": "MyField4",
-      "label": "Only Fruit Names (with custom validation message)",
+      "label": "Only Fruit Names - case sensitive (with custom validation message)",
       "valid": {
          "if": [
             { "in": [{"var": "MyField4"}, ["Apple", "Banana", "Orange", "Grape", "Peach"]] },
@@ -58,7 +60,8 @@
          {
             "type": "text",
             "ref": "MyProp2",
-            "label": "Text Prop 2"
+            "label": "Text Prop 2",
+            "minlength": 3
          },
          {
             "type": "boolean",
@@ -93,7 +96,8 @@
             {
                "type": "text",
                "ref": "MyField2",
-               "label": "Text Field 2"
+               "label": "Text Field 2",
+               "minlength": 3
             },
             {
                "type": "object",
@@ -108,7 +112,8 @@
                   {
                      "type": "text",
                      "ref": "MyProp2",
-                     "label": "Text Field 2"
+                     "label": "Text Field 2",
+                     "minlength": 3
                   }
                ]
             }

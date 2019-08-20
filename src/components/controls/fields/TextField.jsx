@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const TextField = (props) => {
-    return <input type="text" value={props.value} onChange={(e) => props.OnChange(e.target.value, props.schema.ref)} />;
+    const { schema, value, OnChange } = props;
+
+    const { ref, minlength, maxlength } = schema;
+
+    let maxLength = maxlength ? maxlength : null;
+
+    useEffect( () => {
+        let minLength = minlength ? minlength : null;
+        if(minLength!==null){
+            if(value!==undefined && value.length<minLength){
+                OnChange(value, ref, ref, ['Minimum length is '+minLength]);
+            }
+        }
+    }, [value, minlength, ref]);
+
+    return <input type="text" value={value || ''} maxLength={maxLength} onChange={(e) => OnChange(e.target.value, schema.ref, schema.ref)} />;
 };
 
 export default TextField;

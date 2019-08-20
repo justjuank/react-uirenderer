@@ -12,9 +12,11 @@ const initialData = {
 
 function App() {
   const [data, setData] = useState(initialData);
+  const [valid, setValid] = useState(false);
 
-  const OnChange = useCallback((newData) => {
+  const OnChange = useCallback((newData, newValid) => {
     setData(newData);
+    setValid(newValid);
     //console.log('Output', newData);
   }, []);
 
@@ -26,6 +28,7 @@ function App() {
       </div>
       <div style={{ float: 'left', width: '45%', padding: '0 1rem' }}>
         <h4>Data Output</h4>
+        <p>Form Valid State: {valid===true ? 'true' : 'false'}</p>
         <pre style={{ border: '1px solid #ccc', padding: '1rem', minHeight: '300px' }}>{JSON.stringify(data, null, 2)}</pre>
       </div>
     </div>

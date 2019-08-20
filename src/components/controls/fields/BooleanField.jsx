@@ -5,7 +5,7 @@ const BooleanField = (props) => {
 
     const OnChange = (e) => {
         var value = e.target.checked;
-        props.OnChange(value, schema.ref);
+        props.OnChange(value, schema.ref, schema.ref);
     }
 
     return <input type="checkbox" value={props.value} onChange={OnChange} />;
