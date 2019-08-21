@@ -2,7 +2,8 @@
    {
       "type": "number",
       "ref": "MyField1",
-      "label": "Numeric Field 1 (Try a value > 3)"
+      "label": "Numeric Field 1 (Try a value > 3)",
+      "required": true
    },
    {
       "type": "text",
@@ -80,7 +81,8 @@
             "type": "text",
             "ref": "MyProp2",
             "label": "Text Prop 2",
-            "minlength": 3
+            "minlength": 3,
+            "required": true
          },
          {
             "type": "boolean",

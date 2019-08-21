@@ -10,7 +10,7 @@ const TextField = (props) => {
     useEffect( () => {
         let minLength = minlength ? minlength : null;
         if(minLength!==null){
-            if(value!==undefined && value.length<minLength){
+            if(value!==undefined && (value!=null && value.length>0) && value.length<minLength){
                 OnChange(value, ref, ref, ['Minimum length is '+minLength]);
             }
         }

@@ -8,7 +8,6 @@ import JSONEditor from './demo/JSONEditor';
 import schema from './schemas/example1.json';
 
 const initialData = {
-  MyField1: 1,
   MyField2: 'test',
   MySelect1: 2
 };

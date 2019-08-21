@@ -23,8 +23,6 @@ const ArrayField = (props) => {
     
     const OnChange = (newArrayValue, absoluteRef, validations) => {
         let itemFullRef = absoluteRef===undefined ? props.schema.ref : [props.schema.ref, absoluteRef].join('.')
-
-        console.log(itemFullRef);
         if(props.OnChange)
             props.OnChange(newArrayValue, props.schema.ref, itemFullRef, validations);
     };

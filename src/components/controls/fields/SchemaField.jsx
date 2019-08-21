@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback } from 'react';
+import React, { Fragment, useEffect, useCallback } from 'react';
 
 import immutable from 'object-path-immutable';
 import jsonLogic from 'json-logic-js';
@@ -21,7 +21,7 @@ function ResolveExpression(expression, data) {
 }
 
 /**
- * Default schema field
+ * Renders a sub schema
  * @param {*} props 
  */
 const SchemaField = (props) => {
@@ -29,9 +29,10 @@ const SchemaField = (props) => {
 	const { schema, localData, data, OnChange } = props;
 
 	if (!schema) throw new Error('No schema found in this component.');
-	const { visible, valid } = schema;
+	const { visible, valid, required } = schema;
 
-	var formValidations = useContextValue();
+	var formState = useContextValue();
+	var formValidations = formState.validations;
 
 	let fullPath = props.parentRef ? [props.parentRef, schema.ref].join('.') : schema.ref;
 
@@ -46,9 +47,13 @@ const SchemaField = (props) => {
 
 		let newData = immutable.set(data, ref, value);
 
-		//Check for any validations on this level
-		var validity = valid === undefined ? true : ResolveExpression(valid, newData);
+		//Check if this field is required
+		let isRequired = ResolveExpression(required, newData);
+		if(isRequired===true && (!value || value.length<0))
+			validations.push('This field is required');
 
+		//Check for any validations on this level
+		let validity = valid === undefined ? true : ResolveExpression(valid, newData);
 		validations.push(validity);
 		
 		if(OnChange)
@@ -59,6 +64,7 @@ const SchemaField = (props) => {
 	var visibility = ResolveExpression(visible, data);
 	if (visible !== undefined && !visibility) return null;
 
+	var isRequired = ResolveExpression(required, data);
 
 	var SubSchema = null;
 	var LabelComponent = null;
@@ -66,7 +72,7 @@ const SchemaField = (props) => {
 	//Get the label component
 	if (schema.label) {
 		var Label = GetComponentForType('label');
-		LabelComponent = <Label labelInline={schema.labelInline}>{schema.label}</Label>;
+		LabelComponent = <Label labelInline={schema.labelInline} isRequired={isRequired}>{schema.label}</Label>;
 	}
 
 	//Get the sub component

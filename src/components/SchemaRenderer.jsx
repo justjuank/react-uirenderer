@@ -5,7 +5,7 @@ import objectPath from 'object-path';
 import SchemaField from './controls/fields/SchemaField';
 
 /**
- * Renders a collection of schemas or a schema property
+ * Renders a collection of schemas or a sub schema
  * @param {*} props 
  */
 const SchemaRenderer = (props) => {

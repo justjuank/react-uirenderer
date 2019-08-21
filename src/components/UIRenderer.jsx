@@ -8,6 +8,7 @@ export const UIRendererContext = createContext();
 
 const UIRenderer = (props) => {
     const [data, setData] = useState(props.data);
+    const [touched, setTouched] = useState(false);
     const [formValid, setFormValid] = useState(false);
     const [fieldValidation, setFieldValidation] = useState({});
 
@@ -23,6 +24,8 @@ const UIRenderer = (props) => {
         setFormValid(isFormValid);
 
         setData(immutable.set(data, ref, value));
+
+        setTouched(true);
     }, [data, fieldValidation]);
 
     useEffect(()=> {
@@ -31,9 +34,14 @@ const UIRenderer = (props) => {
         }
     }, [data, formValid, props]);
 
+    let formState = {
+        validations: fieldValidation,
+        touched: touched,
+    }
+
     return (
         <div>
-            <UIRendererContext.Provider value={fieldValidation}>
+            <UIRendererContext.Provider value={formState}>
                 <SchemaRenderer schema={props.schema} localData={data} data={data} OnChange={OnChange} />
             </UIRendererContext.Provider>
         </div>
