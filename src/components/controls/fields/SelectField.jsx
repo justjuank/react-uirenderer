@@ -16,7 +16,7 @@ const SelectField = (props) => {
     const { schema } = props;
 
     const OnChange = (e) => {
-        var value = e.target.value.length <= 0 ? null : (parseFloat(e.target.value));
+        var value = e.target.value.length <= 0 ? null : e.target.value;
         props.OnChange(value, schema.ref, schema.ref);
     }
 
