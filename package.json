@@ -1,34 +1,51 @@
 {
-  "name": "react-uirenderer",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "json-logic-js": "^1.2.2",
-    "object-path": "^0.11.4",
-    "object-path-immutable": "^3.1.1",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "react-uirenderer",
+    "version": "0.1.0",
+    "description": "This was done as a proof of concept to generate a user interface dynamically by using some kind of schema",
+    "author": "Juan Charria",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/justjuank/react-uirenderer.git"
+    },
+    "main": "lib/ReactUiRenderer.js",
+    "peerDependencies": {
+        "react": "^16.9.0",
+        "react-dom": "^16.9.0"
+    },
+    "dependencies": {
+        "json-logic-js": "^1.2.2",
+        "object-path": "^0.11.4",
+        "object-path-immutable": "^3.1.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.4.0",
+        "@babel/preset-env": "^7.4.2",
+        "@babel/preset-react": "^7.0.0",
+        "babel-loader": "^8.0.5",
+        "react": "^16.9.0",
+        "react-dom": "^16.9.0",
+        "react-scripts": "3.1.1",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.3.0"
+    },
+    "scripts": {
+        "start": "webpack --watch",
+        "build": "webpack --mode production"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }

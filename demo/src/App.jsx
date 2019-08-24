@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import './App.css';
 
-import UIRenderer from './components/UIRenderer';
+import { UIRenderer } from 'react-uirenderer';
 
 import JSONEditor from './demo/JSONEditor';
 
